@@ -40,12 +40,12 @@ window.onload = function (e) {
       { name: "salt", type: "bytes32" },
     ];
 
-    var bid = [
+    const bid = [
       { name: "amount", type: "uint256" },
       { name: "bidder", type: "Identity" },
     ];
 
-    var identity = [
+    const identity = [
       { name: "userId", type: "uint256" },
       { name: "wallet", type: "address" },
     ];
@@ -75,7 +75,7 @@ window.onload = function (e) {
       domain: domainData,
       primaryType: "Bid",
       message: message
-    })
+    });
 
     const signer = web3.eth.accounts[0];
 
