@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>EIP712 demo</title>
+  </head>
+  <body>
+    <p>You need a version of MetaMask that supports eth_signTypedData_v2 to use this demo.</p>
+
+    <p>
+    Prebuilt extensions can be downloaded from 
+    metamaskbot <a href="https://github.com/MetaMask/metamask-extension/pull/4803#issuecomment-420071748"
+      target="_blank">here</a>.
+    </p>
+
+    <button id="signBtn">Click here to sign some typed data</button>
+    <br />
+    <br />
+    <p>Next, copy and paste this 
+    into <a target="_blank" href="https://remix.ethereum.org/#optimize=true&version=soljson-v0.4.24+commit.e67f0147.js">Remix</a>, deploy 
+    it in the Javascript VM environment, and run the verify function.</p>
+    <br />
+    <textarea readonly rows=10 cols=80 id="response">
+    </textarea>
+    <br />
+    <p>
+        If Remix displays <pre>0: bool: true</pre> that's great! Your wallet address was successfully authenticated.
+    </p>
+
+    <br />
+
+    <p>An example:</p>
+    <img src="./remix.png" />
+
+    <script charset="utf-8"
+            src="https://cdn.ethers.io/scripts/ethers-v3.min.js"
+            type="text/javascript">
+    </script>
+    <script src="./solidityCode.js" language="javascript"></script>
+    <script src="./demoTxSign.js" language="javascript"></script>
+  </body>
+</html>
