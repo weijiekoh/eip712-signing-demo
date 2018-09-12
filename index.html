@@ -6,13 +6,14 @@
   </head>
   <body>
     <p>
-      You need a version of MetaMask that supports eth_signTypedData_v2 to use
-      this demo.
+      This page demonstrates how to sign EIP712 typed data using MetaMask and
+      verify it in Solidity. Feel free to learn from it and adapt it for your
+      dApp and smart contracts.
     </p>
-
     <p>
-      Prebuilt extensions can be downloaded from metamaskbot <a
-          href="https://github.com/MetaMask/metamask-extension/pull/4803#issuecomment-420071748"
+      You need a version of MetaMask that supports eth_signTypedData_v2 to use
+      this demo.  Prebuilt extensions can be downloaded from metamaskbot <a
+          href="https://github.com/MetaMask/metamask-extension/pull/4803#issuecomment-420281238"
           target="_blank">here</a>.
     </p>
 
@@ -34,11 +35,6 @@
       been inserted into the Solidity code above. The code hashes the data you
       just signed, runs ecrecover with yoour signature, and compares it with
       your wallet address.
-    </p>
-    <p>
-      This exercise simulates what a dApp would do to find out who signed a
-      piece of signed data. Feel free to learn from it and adapt it for your
-      dApp and smart contracts.
     </p>
     <p>
         If Remix displays <pre>0: bool: true</pre> that's great! Your wallet
