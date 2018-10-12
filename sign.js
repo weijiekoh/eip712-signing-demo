@@ -82,7 +82,7 @@ window.onload = function (e) {
     web3.currentProvider.sendAsync(
       {
         method: "eth_signTypedData_v3",
-        params: [data, signer],
+        params: [signer, data],
         from: signer
       }, 
       function(err, result) {
