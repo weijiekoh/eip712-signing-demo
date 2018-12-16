@@ -11,10 +11,15 @@ function parseSignature(signature) {
 }
 
 function genSolidityVerifier(signature, signer) {
-	return solidityCode.replace("<SIGR>", signature.r)
-	  .replace("<SIGS>", signature.s)
-    .replace("<SIGV>", signature.v)
-    .replace("<SIGNER>", signer);
+	  
+    const chainId = parseInt(web3.version.network, 10);
+
+    return solidityCode
+	.replace("<CHAINID>", chainId)
+	.replace("<SIGR>", signature.r)
+	.replace("<SIGS>", signature.s)
+    	.replace("<SIGV>", signature.v)
+    	.replace("<SIGNER>", signer);
 }
 
 window.onload = function (e) {
@@ -50,10 +55,12 @@ window.onload = function (e) {
       { name: "wallet", type: "address" },
     ];
 
+    const chainId = parseInt(web3.version.network, 10);
+  
     const domainData = {
       name: "My amazing dApp",
       version: "2",
-      chainId: parseInt(web3.version.network, 10),
+      chainId: chainId,
       verifyingContract: "0x1C56346CD2A2Bf3202F771f50d3D14a367B48070",
       salt: "0xf2d857f4a3edcb9b78b4d503bfe733db1e3f6cdc2b7971ee739626c97e86a558"
     };
