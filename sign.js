@@ -82,7 +82,7 @@ window.onload = function (e) {
       message: message
     });
 
-    const signer = web3.eth.accounts[0];
+    const signer = web3.toChecksumAddress(web3.eth.accounts[0]);
 
     web3.currentProvider.sendAsync(
       {
