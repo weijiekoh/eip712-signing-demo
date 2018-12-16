@@ -10,10 +10,8 @@ function parseSignature(signature) {
   }
 }
 
-function genSolidityVerifier(signature, signer) {
+function genSolidityVerifier(signature, signer, chainId) {
 	  
-    const chainId = parseInt(web3.version.network, 10);
-
     return solidityCode
 	.replace("<CHAINID>", chainId)
 	.replace("<SIGR>", signature.r)
@@ -100,7 +98,7 @@ window.onload = function (e) {
         const signature = parseSignature(result.result.substring(2));
 
         res.style.display = "block";
-        res.value = genSolidityVerifier(signature, signer);
+        res.value = genSolidityVerifier(signature, signer, chainId);
       }
     );
   };
