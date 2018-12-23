@@ -1,7 +1,7 @@
 const solidityCode =
 `
 pragma experimental ABIEncoderV2;
-pragma solidity ^0.4.24;
+pragma solidity ^0.5.0;
 
 contract Verifier {
     uint256 constant chainId = <CHAINID>;
@@ -34,7 +34,7 @@ contract Verifier {
         Identity bidder;
     }
     
-    function hashIdentity(Identity identity) private pure returns (bytes32) {
+    function hashIdentity(Identity memory identity) private pure returns (bytes32) {
         return keccak256(abi.encode(
             IDENTITY_TYPEHASH,
             identity.userId,
