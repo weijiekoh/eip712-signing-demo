@@ -12,12 +12,12 @@ function parseSignature(signature) {
 
 function genSolidityVerifier(signature, signer, chainId) {
 	  
-    return solidityCode
-	.replace("<CHAINID>", chainId)
-	.replace("<SIGR>", signature.r)
-	.replace("<SIGS>", signature.s)
-    	.replace("<SIGV>", signature.v)
-    	.replace("<SIGNER>", signer);
+  return solidityCode
+    .replace("<CHAINID>", chainId)
+    .replace("<SIGR>", signature.r)
+    .replace("<SIGS>", signature.s)
+    .replace("<SIGV>", signature.v)
+    .replace("<SIGNER>", signer);
 }
 
 window.onload = function (e) {
