@@ -65,7 +65,7 @@ window.onload = function (e) {
       salt: "0xf2d857f4a3edcb9b78b4d503bfe733db1e3f6cdc2b7971ee739626c97e86a558"
     };
 
-    var message = {
+    const message = {
       amount: 100,
       bidder: {
         userId: 323,
