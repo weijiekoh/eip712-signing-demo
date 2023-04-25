@@ -1,7 +1,8 @@
 const solidityCode =
 `
+// SPDX-License-Identifier: MIT
 pragma experimental ABIEncoderV2;
-pragma solidity ^0.5.0;
+pragma solidity ^0.8.0;
 
 contract Verifier {
     uint256 constant chainId = <CHAINID>;
@@ -68,6 +69,17 @@ contract Verifier {
         bytes32 sigR = <SIGR>;
         bytes32 sigS = <SIGS>;
         uint8 sigV = <SIGV>;
+
+        // NOTE: please convert the signer's address to its checksummed version 
+        // in order to compile the code.
+        //
+        // You can use visit Etherscan and copy-paste the checksummed address
+        // to do so.
+        //
+        // A checksummed address contains a mix of uppercase and lowercase
+        // characters.
+        //
+        // https://etherscan.io/address/<SIGNER>
         address signer = <SIGNER>;
     
         return signer == ecrecover(hashBid(bid), sigV, sigR, sigS);

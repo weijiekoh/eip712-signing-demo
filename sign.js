@@ -19,6 +19,7 @@ function genSolidityVerifier(signature, signer, chainId) {
     .replace("<SIGR>", signature.r)
     .replace("<SIGS>", signature.s)
     .replace("<SIGV>", signature.v)
+    .replace("<SIGNER>", signer)
     .replace("<SIGNER>", signer);
 }
 
