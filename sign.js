@@ -26,20 +26,20 @@ async function getProvider() {
   // Get injected provider
   const provider = window.ethereum;
 
-  // Unlock provider
-  if (!provider.isConnected() || provider.accounts[0] == null) {
-    // Trigger login request from injected provider
-    await provider.enable().catch((error) => {
-      // Format Error
-      const errorFormatted = JSON.stringify(error, null, 2);
-
-      // Alert
-      alert(errorFormatted);
-
-      // Throw
-      throw new Error(errorFormatted);
-    });
+  // Throw if no provider
+  if (provider == undefined) {
+    alert("No Metamask");
+    throw new Error("No Metamask");
   }
+
+  // Trigger connect prompt by requesting accounts
+  await provider.request({ method: "eth_requestAccounts" }).catch((error) => {
+    // Alert
+    alert(error.message);
+
+    // Throw
+    throw new Error(error.message);
+  });
 
   // Return provider
   return provider;
@@ -71,7 +71,10 @@ async function sign() {
   ];
 
   // Get chain ID
-  const chainId = parseInt(provider.networkVersion, 10);
+  const chainId = parseInt(
+    await provider.request({ method: "eth_chainId" }),
+    10
+  );
 
   // Domain data
   const domainData = {
@@ -104,7 +107,7 @@ async function sign() {
   });
 
   // Get signer address
-  const signer = provider.accounts[0];
+  const signer = (await provider.request({ method: "eth_requestAccounts" }))[0];
 
   // Sign message
   const rawSignature = await provider
@@ -114,14 +117,11 @@ async function sign() {
       from: signer,
     })
     .catch((error) => {
-      // Format Error
-      const errorFormatted = JSON.stringify(error, null, 2);
-
       // Alert
-      alert(errorFormatted);
+      alert(error.message);
 
       // Throw
-      throw new Error(errorFormatted);
+      throw new Error(error.message);
     });
 
   // Parse signature
